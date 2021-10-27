@@ -48,17 +48,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $lastname;
 
     /**
-     * @ORM\ManyToMany(targetEntity=service::class, inversedBy="users")
+     * @ORM\ManyToMany(targetEntity=Service::class, inversedBy="users")
      */
     private $services;
 
     /**
-     * @ORM\OneToMany(targetEntity=question::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Question::class, mappedBy="user")
      */
     private $question;
 
     /**
-     * @ORM\OneToMany(targetEntity=answer::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Answer::class, mappedBy="user")
      */
     private $answer;
 
