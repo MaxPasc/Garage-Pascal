@@ -3,18 +3,40 @@
 {% block title %}Hello ServiceController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<h1>Liste d'un service</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/MAMP/htdocs/Symfony/GaragePascal/src/Controller/ServiceController.php'|file_link(0) }}">src/Controller/ServiceController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/MAMP/htdocs/Symfony/GaragePascal/templates/service/index.html.twig'|file_link(0) }}">templates/service/index.html.twig</a></code></li>
-    </ul>
+<div>
+    <button><a href="{{ path('services_create') }}">Ajouter un service</a></button>
 </div>
+
+<table>
+    <thead>
+        <th scope="col">Service</th>
+        <th scope="col">Description</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Modifier</th>
+        <th scope="col">Supprimer</th>
+    </thead>
+
+    <tbody>
+        {% for service in services %}
+        <tr>
+            <td>{{ service.name }}</td>
+            <td>{{ service.description }}</td>
+            <td>{{ service.price }}</td>
+            <td>
+                <button class="btn"><a href="{{ path('services_edit', {"id": service.id}) }}">Modifier</a></button>
+            </td>
+            <td>
+                <button class="btn"><a href="{{ path('services_delete', {"id": service.id}) }}">Supprimer</a></button>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+
 {% endblock %}

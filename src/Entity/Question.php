@@ -28,7 +28,7 @@ class Question
     private $user;
 
     /**
-     * @ORM\OneToOne(targetEntity=answer::class, inversedBy="question", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Answer::class, inversedBy="question", cascade={"persist", "remove"})
      */
     private $answer;
 
