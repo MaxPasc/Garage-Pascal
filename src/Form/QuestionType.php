@@ -14,7 +14,7 @@ class QuestionType extends AbstractType
         $builder
             ->add('user')
             ->add('content')
-            // ->add('answer')
+            ->add('answer')
         ;
     }
 
