@@ -27,6 +27,14 @@ class ServiceController extends AbstractController
      */
     public function create(Request $request): Response
     {
+        // Permet de vérifier si utilisateur connecté et si c'est un admin.
+        // Si ce n'est pas un admin alors on le redirige vers l'index des services car il n'a rien à faire ici.
+        // => Code copié collé sur les 3 routes du crud : create/edit/delete
+        $user = $this->getUser();
+        if(!$user OR !in_array('ROLE_ADMIN', $user->getRoles())) {
+            return $this->redirectToRoute('services_index');
+        }
+        
         $service = new Service();
 
         $form = $this->createForm(ServiceType::class, $service);
