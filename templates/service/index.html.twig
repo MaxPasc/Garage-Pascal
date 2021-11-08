@@ -8,7 +8,7 @@
 
 {% if is_granted("ROLE_ADMIN") %}
 <div>
-    <button><a href="{{ path('services_create') }}">Ajouter un service</a></button>
+    <button><a href="{{ path('services_create') }}">🔒 Ajouter un service</a></button>
 </div>
 {% endif %}
 
@@ -31,10 +31,10 @@
             <td>{{ service.price }}</td>
             {% if is_granted("ROLE_ADMIN") %}
                 <td>
-                    <button class="btn"><a href="{{ path('services_edit', {"id": service.id}) }}">Modifier</a></button>
+                    <button class="btn"><a href="{{ path('services_edit', {"id": service.id}) }}">🔒 Modifier</a></button>
                 </td>
                 <td>
-                    <button class="btn"><a href="{{ path('services_delete', {"id": service.id}) }}">Supprimer</a></button>
+                    <button class="btn"><a href="{{ path('services_delete', {"id": service.id}) }}">🔒 Supprimer</a></button>
                 </td>
             {% endif %}
         </tr>
