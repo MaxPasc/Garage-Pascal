@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Question;
+use App\Entity\Faq;
 use App\Entity\Service;
 use App\Repository\QuestionRepository;
 use App\Repository\ServiceRepository;
@@ -32,6 +32,6 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Services', 'fas fa-list', Service::class);
-        yield MenuItem::linkToCrud('FAQ', 'fas fa-list', Question::class);
+        yield MenuItem::linkToCrud('FAQ', 'fas fa-list', Faq::class);
     }
 }

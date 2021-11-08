@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <h1>Login</h1>
+    <h1>Inscription</h1>
 
     {{ form_start(form) }}
     {{ form_row(form.firstname, {'label': 'Nom', 'attr': {'placeholder': 'Votre nom...'}}) }}
@@ -11,5 +11,6 @@
     {{ form_row(form.password.first) }}
     {{ form_row(form.password.second) }}
     <button type="submit" class="btn btn-success">Inscription !</button>
-    {{ form_end(form) }}
+    {{ form_end(form) }} <br> <br>
+    <a href="{{ path('app_login')}}">J'ai déjà un compte</a>
 {% endblock %}

@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Question;
-use App\Form\QuestionType;
-use App\Repository\QuestionRepository;
+
+use App\Entity\Faq;
+use App\Form\FaqType;
+use App\Repository\FaqRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,10 +16,10 @@ class FaqController extends AbstractController
     /**
      * @Route("/faq", name="faq_index")
      */
-    public function index(QuestionRepository $questionRepository): Response
+    public function index(FaqRepository $faqRepository): Response
     {
         return $this->render('faq/index.html.twig', [
-            'questions' => $questionRepository->findAll(),
+            'faqs' => $faqRepository->findBy(['visible' => true], ['weight' => 'desc']),
         ]);
     }
 
@@ -27,14 +28,16 @@ class FaqController extends AbstractController
      */
     public function create(Request $request): Response
     {
-        $question = new Question();
+        $faq = new Faq();
 
-        $form = $this->createForm(QuestionType::class, $question);
+        $form = $this->createForm(FaqType::class, $faq);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+          $user = $this->getUser();
           $em = $this->getDoctrine()->getManager();
-          $em->persist($question);
+          $em->persist($faq);
+          $faq->setUser($user);
           $em->flush();
 
           return $this->redirectToRoute('faq_index');

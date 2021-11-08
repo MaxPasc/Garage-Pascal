@@ -13,3 +13,9 @@ import { Tooltip, Toast, Popover } from 'bootstrap';
 
 // start the Stimulus application
 import './bootstrap';
+
+
+// returns the final, public path to this file
+import logoPath from './images/garagepascal.png';
+
+let html = `<img src="${logoPath}" alt="Garage Pascal logo">`;

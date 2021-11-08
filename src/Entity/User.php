@@ -61,20 +61,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $services;
 
     /**
-     * @ORM\OneToMany(targetEntity=Question::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Faq::class, mappedBy="user", orphanRemoval=true)
      */
-    private $question;
+    private $faqs;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Answer::class, mappedBy="user")
-     */
-    private $answer;
 
     public function __construct()
     {
         $this->services = new ArrayCollection();
-        $this->question = new ArrayCollection();
-        $this->answer = new ArrayCollection();
+        $this->faqs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -214,69 +209,39 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|question[]
-     */
-    public function getQuestion(): Collection
-    {
-        return $this->question;
-    }
-
-    public function addQuestion(question $question): self
-    {
-        if (!$this->question->contains($question)) {
-            $this->question[] = $question;
-            $question->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeQuestion(question $question): self
-    {
-        if ($this->question->removeElement($question)) {
-            // set the owning side to null (unless already changed)
-            if ($question->getUser() === $this) {
-                $question->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|answer[]
-     */
-    public function getAnswer(): Collection
-    {
-        return $this->answer;
-    }
-
-    public function addAnswer(answer $answer): self
-    {
-        if (!$this->answer->contains($answer)) {
-            $this->answer[] = $answer;
-            $answer->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAnswer(answer $answer): self
-    {
-        if ($this->answer->removeElement($answer)) {
-            // set the owning side to null (unless already changed)
-            if ($answer->getUser() === $this) {
-                $answer->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function __toString()
     {
         return $this->firstname;
+    }
+
+    /**
+     * @return Collection|Faq[]
+     */
+    public function getFaqs(): Collection
+    {
+        return $this->faqs;
+    }
+
+    public function addFaq(Faq $faq): self
+    {
+        if (!$this->faqs->contains($faq)) {
+            $this->faqs[] = $faq;
+            $faq->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFaq(Faq $faq): self
+    {
+        if ($this->faqs->removeElement($faq)) {
+            // set the owning side to null (unless already changed)
+            if ($faq->getUser() === $this) {
+                $faq->setUser(null);
+            }
+        }
+
+        return $this;
     }
 
 }

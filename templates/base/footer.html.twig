@@ -1,0 +1,57 @@
+<footer class="bg-dark text-center text-lg-start">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Informations</h5>
+  
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="{{ asset('base/cgv.html') }}" class="text-light">CGV</a>
+            </li>
+            <li>
+              <a href="{{ asset('base/mentions-legales.html') }}" class="text-light">Mention légales</a>
+            </li>
+            <li>
+              <a href="{{ path('faq_index') }}" class="text-light">FAQ</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+  
+        
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-0">Liens</h5>
+  
+          <ul class="list-unstyled">
+            <li>
+              <a href="{{ path('home') }}" class="text-light">Accueil</a>
+            </li>
+            <li>
+              <a href="{{ path('services_index') }}" class="text-light">Services</a>
+            </li>
+            <li>
+              <a href="{{ path('contact') }}" class="text-light">Contact</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Logo -->
+    <div class="text-center p-3" style="background-color: rgb(0, 0, 0);">
+        <div class="logo">
+            <img
+              src="{{ asset('build/images/garagepascal.png') }}"
+              alt="Garage Pascal logo"
+            />
+          </div>
+    </div>
+    <!-- Copyright -->
+  </footer>

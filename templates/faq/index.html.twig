@@ -4,8 +4,9 @@
 
 {% block body %}
 
-{% for question in questions %}
-    {{ question.content }}
+{% for faq in faqs %}
+   <b>{{ faq.question }}</b> <br>
+   {{ faq.answer }} <br> <hr>
     
 {% endfor %}
 {% endblock %}

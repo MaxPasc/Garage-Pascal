@@ -36,14 +36,14 @@ class SecurityController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
-        //     $email = (new Email())
-        //     ->from(new Address('maxime.pasc@gmail.com', 'Garage Pascal'))
-        //     ->to($user->getEmail())
-        //     ->subject("Confirmation d'inscription")
-        //     ->text('Bienvenue chez nous '); 
+            $email = (new Email())
+            ->from(new Address('maxime.pasc@gmail.com', 'Garage Pascal'))
+            ->to($user->getEmail())
+            ->subject("Confirmation d'inscription")
+            ->text('Bienvenue chez nous '); 
             
-        //    $mailer->send($email);
-        //    $flash->add('success', 'votre inscription à bien été prise en compte. Merci');
+           $mailer->send($email);
+           $flash->add('success', 'votre inscription à bien été prise en compte. Merci');
 
             return $this->redirectToRoute('app_login');
         }
