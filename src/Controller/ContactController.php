@@ -17,6 +17,12 @@ class ContactController extends AbstractController
      */
     public function index(Request $request, ContactService $contactService): Response
     {
+        // MODIFS SEB - START
+        // Redirect vers page de login quand user non connecté
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        }
+        // MODIFS SEB - END
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
