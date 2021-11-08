@@ -19,7 +19,14 @@
           <a class="nav-link" href="{{ path('faq_index')}}">FAQ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ path('security_registration')}}">Login</a>
+          <!-- MODIFS SEB - START -->
+          <!-- app.user est une variable globale accessible depuis n'importe où dans les templates. Si l'utilisateur est connecté alors elle renvoie l'utilisateur connecté, sinon elle renvoie null (c'est ce qu'on teste ici) -->
+          {% if app.user %}
+            <a class="nav-link" href="{{ path('app_logout')}}">Déconnexion</a>
+          {% else %}
+            <a class="nav-link" href="{{ path('security_registration')}}">Login</a>
+          {% endif %}
+          <!-- MODIFS SEB - END -->
         </li>
         <!-- <div class="collapse navbar-collapse" id="navbarNavDarkDropdown"> -->
           <!-- <ul class="navbar-nav">
