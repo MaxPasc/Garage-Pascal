@@ -1,9 +1,5 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
-
+<div class="d-flex flex-column">
     <h1>Inscription</h1>
-
     {{ form_start(form) }}
     {{ form_row(form.firstname, {'label': 'Nom', 'attr': {'placeholder': 'Votre nom...'}}) }}
     {{ form_row(form.lastname, {'label': 'Prenom', 'attr': {'placeholder': 'Votre prénom...'}}) }}
@@ -12,5 +8,9 @@
     {{ form_row(form.password.second) }}
     <button type="submit" class="btn btn-success">Inscription !</button>
     {{ form_end(form) }} <br> <br>
-    <a href="{{ path('app_login')}}">J'ai déjà un compte</a>
-{% endblock %}
+    
+    <p class="signup">Vous avez déjà un compte ?
+        <a href="#" onclick="toggleForm();">  Se connecter</a>
+    </p>
+</div>
+

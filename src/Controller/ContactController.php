@@ -18,7 +18,7 @@ class ContactController extends AbstractController
     public function index(Request $request, ContactService $contactService): Response
     {
         if (!$this->getUser()) {
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('security_index');
         }
         
         $contact = new Contact();
