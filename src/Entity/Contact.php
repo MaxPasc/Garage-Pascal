@@ -32,15 +32,15 @@ class Contact
      */
     private $message;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $IsSend;
+    // /**
+    //  * @ORM\Column(type="boolean")
+    //  */
+    // private $IsSend;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    // public function getId(): ?int
+    // {
+    //     return $this->id;
+    // }
 
     public function getNom(): ?string
     {
@@ -78,15 +78,15 @@ class Contact
         return $this;
     }
 
-    public function getIsSend(): ?bool
-    {
-        return $this->IsSend;
-    }
+    // public function getIsSend(): ?bool
+    // {
+    //     return $this->IsSend;
+    // }
 
-    public function setIsSend(bool $IsSend): self
-    {
-        $this->IsSend = $IsSend;
+    // public function setIsSend(bool $IsSend): self
+    // {
+    //     $this->IsSend = $IsSend;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }

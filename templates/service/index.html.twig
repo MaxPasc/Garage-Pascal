@@ -1,47 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ServiceController!{% endblock %}
+{% block title %}Nos services{% endblock %}
 
 {% block body %}
 
-<h1>Liste des service</h1>
+<h1 class="text-center my-4">Liste des services</h1>
 
 {% if is_granted("ROLE_ADMIN") %}
-<div>
-    <button><a href="{{ path('services_create') }}">🔒 Ajouter un service</a></button>
+<div class="text-end pr-3">
+    <a class="btn btn-primary" href="{{ path('services_create') }}">🔒 Ajouter un service</a>
 </div>
 {% endif %}
-
-<table>
-    <thead>
-        <th scope="col">Service</th>
-        <th scope="col">Description</th>
-        <!-- <th scope="col">Prix</th> -->
-        {% if is_granted("ROLE_ADMIN") %}
-            <th scope="col">Modifier</th>
-            <th scope="col">Supprimer</th>
-        {% endif %}
-    </thead>
-
-    <tbody>
-        {% for service in services %}
-        <tr>
-            <td>{{ service.name }}</td>
-            <td>{{ service.description }}</td>
-            <!-- <td>{{ service.price }}</td> -->
-            {% if is_granted("ROLE_ADMIN") %}
+<div class="row my-5 px-3">
+    
+    {% for service in services %}
+    <div class="col-md-6 col-12">
+    <div class="card mx-auto mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+           PHOTO 
+           <!-- <img src="..." class="img-fluid rounded-start" alt="Service {{service.name}}"> -->
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{service.name}}</h5>
+              <p class="card-text">{{service.description}}</p>
+              {% if is_granted("ROLE_ADMIN") %}  <p class="card-text"><small class="text-muted"> 
                 <td>
                     <button class="btn"><a href="{{ path('services_edit', {"id": service.id}) }}">🔒 Modifier</a></button>
                 </td>
                 <td>
                     <button class="btn"><a href="{{ path('services_delete', {"id": service.id}) }}">🔒 Supprimer</a></button>
                 </td>
-            {% endif %}
-        </tr>
-        {% endfor %}
-    </tbody>
-
-</table>
+           </small></p> {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+</div>
 
 
 {% endblock %}
