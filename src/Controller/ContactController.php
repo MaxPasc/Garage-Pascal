@@ -22,7 +22,7 @@ class ContactController extends AbstractController
     public function index(Request $request, ContactService $contactService, EntityManagerInterface $manager,MailerInterface $mailer): Response
     {
         if (!$this->getUser()) {
-            return $this->redirectToRoute('security_index');
+            return $this->redirectToRoute('app_login');
         }
         
         $contact = new Contact();

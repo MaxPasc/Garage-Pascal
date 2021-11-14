@@ -18,44 +18,44 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class SecurityController extends AbstractController
 {
-    /**
-     * @Route("/inscription", name="security_registration")
-     */
-    public function registration(Request $request, EntityManagerInterface $manager,
-     MailerInterface $mailer, UserPasswordHasherInterface $passwordHasher, FlashBagInterface $flash) {
-        $user = new User();
+    // /**
+    //  * @Route("/inscription", name="security_registration")
+    //  */
+    // public function registration(Request $request, EntityManagerInterface $manager,
+    //  MailerInterface $mailer, UserPasswordHasherInterface $passwordHasher, FlashBagInterface $flash) {
+    //     $user = new User();
 
-        $form = $this->createForm(RegistrationType::class, $user);
+    //     $form = $this->createForm(RegistrationType::class, $user);
 
-        $form->handleRequest($request);
+    //     $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
-            $hash = $passwordHasher->hashPassword($user, $user->getPassword());
-            // $user->setUsername($user->getEmail());
-            $user->setRoles(array("ROLE_USER"));
-            $user->setPassword($hash);
-            $manager->persist($user);
-            $manager->flush();
+    //     if($form->isSubmitted() && $form->isValid()) {
+    //         $hash = $passwordHasher->hashPassword($user, $user->getPassword());
+    //         // $user->setUsername($user->getEmail());
+    //         $user->setRoles(array("ROLE_USER"));
+    //         $user->setPassword($hash);
+    //         $manager->persist($user);
+    //         $manager->flush();
 
-            $email = (new Email())
-            ->from(new Address('maxime.pasc@gmail.com', 'Garage Pascal'))
-            ->to($user->getEmail())
-            ->subject("Confirmation d'inscription")
-            ->text('Bienvenue chez nous '); 
+    //         $email = (new Email())
+    //         ->from(new Address('maxime.pasc@gmail.com', 'Garage Pascal'))
+    //         ->to($user->getEmail())
+    //         ->subject("Confirmation d'inscription")
+    //         ->text('Bienvenue chez nous '); 
             
-           $mailer->send($email);
-           $flash->add('success', 'votre inscription à bien été prise en compte. Merci');
+    //        $mailer->send($email);
+    //        $flash->add('success', 'votre inscription à bien été prise en compte. Merci');
 
-            return $this->redirectToRoute('app_login');
-        }
+    //         return $this->redirectToRoute('app_login');
+    //     }
 
-        return $this->render('security/registration.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
+    //     return $this->render('security/registration.html.twig', [
+    //         'form' => $form->createView()
+    //     ]);
+    // }
 
     /**
-     * @Route("/ind", name="security_index")
+     * @Route("/login", name="app_login")
      */
     public function index(Request $request, EntityManagerInterface $manager,
      MailerInterface $mailer, UserPasswordHasherInterface $passwordHasher, FlashBagInterface $flash, AuthenticationUtils $authenticationUtils) {
@@ -87,7 +87,7 @@ class SecurityController extends AbstractController
            $mailer->send($email);
            $flash->add('success', 'votre inscription à bien été prise en compte. Merci');
 
-            return $this->redirectToRoute('security_index');
+            return $this->redirectToRoute('app_login');
         }
         // elseif() 
         

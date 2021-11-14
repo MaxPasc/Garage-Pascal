@@ -87,6 +87,26 @@
 
 /* MAIN */
 
+.intro h2 {
+  font-weight: bold;
+  /* font-family: fantasy; */
+  color: rgba(207, 17, 17, 0.829);
+}
+
+.intro ul {
+  border: 2px solid black;
+}
+
+.intro ul li {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.intro p {
+  font-style: italic;
+  font-size: 20px;
+}
+
 /*****************************************/
 /* Section pages connexion User : DEBUT */
 .userup_section {
@@ -243,3 +263,14 @@
 }
 /* Section pages connection User : FIN */
 /***************************************/
+
+        /* CONTACT */
+.row-2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: -15px;
+  /* margin-right: -15px;
+  margin-left: -15px; */
+}
+
